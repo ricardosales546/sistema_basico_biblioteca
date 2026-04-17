@@ -40,7 +40,6 @@ public class Main {
 					System.out.print("Digite o ISBN: ");
 					String isbn = entrada.nextLine();
 					
-					// Todo livro novo nasce DISPONIVEL por padrão 
 					Livro novoLivro = new Livro(titulo, autor, isbn, Livro.Disponibilidade.DISPONIVEL);
 					acervo.add(novoLivro);
 					System.out.println("Sucesso: Livro cadastrado!");
@@ -77,7 +76,6 @@ public class Main {
 					System.out.print("Digite o ISBN do livro a ser removido: ");
 					String isbnRemover = entrada.nextLine();
 					
-					// O removeIf retorna true se ele conseguiu remover algo
 					boolean removeu = acervo.removeIf(l -> l.getIsbn().equals(isbnRemover));
 					
 					if (removeu) {
@@ -106,10 +104,8 @@ public class Main {
 					}
 					
 					if (livroParaAlugar != null) {
-						// Cria o usuário temporário e tenta fazer o empréstimo
 						Usuario user = new Usuario(nomeUser, matUser);
 						
-						// A nossa regra de negócio diz que se não estiver disponível, o método 'alugar' apenas avisa o erro
 						if (livroParaAlugar.getDis() == Livro.Disponibilidade.DISPONIVEL) {
 							Emprestimo emp = new Emprestimo(user, livroParaAlugar);
 							System.out.println("\nResumo do Empréstimo:");
@@ -136,7 +132,6 @@ public class Main {
 		entrada.close();
 	}
 
-	// Método auxiliar para listar
 	public static void listarLivros(List<Livro> lista) {
 		if (lista.isEmpty()) {
 			System.out.println("O acervo está vazio no momento.");
